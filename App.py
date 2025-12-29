@@ -17,8 +17,8 @@ def search_addresses(searchterm: str):
     
     # Filter the 'Address' column (Ensure your Excel header is exactly 'Address')
     # case=False makes it non-case-sensitive
-    mask = df['Address'].str.contains(searchterm, case=False, na=False)
-    matches = df[mask]['Address'].unique().tolist()
+    mask = df['ADDRESS'].str.contains(searchterm, case=False, na=False)
+    matches = df[mask]['ADDRESS'].unique().tolist()
     
     # Return top 10 matches to keep the dropdown clean
     return matches[:10]
@@ -29,13 +29,13 @@ st.title("📍 Address Search Portal")
 selected_address = st_searchbox(
     search_addresses,
     key="address_search",
-    placeholder="Type an address (e.g., 123 Main St)...",
+    placeholder="Type an address",
 )
 
 # Display the full row data when an address is selected
 if selected_address:
     st.markdown(f"### Result for: **{selected_address}**")
-    result_data = df[df['Address'] == selected_address]
+    result_data = df[df['ADDRESS'] == selected_address]
     st.dataframe(result_data, use_container_width=True)
 else:
     st.info("Start typing at least 3 characters of an address to see matches.")
