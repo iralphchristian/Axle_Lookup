@@ -6,7 +6,7 @@ from streamlit_searchbox import st_searchbox
 @st.cache_data
 def load_data():
     # Ensure your Excel file is named 'database.xlsx' in the same folder
-    return pd.read_excel("Axle_Lookup.xlsx")
+    return pd.read_excel("Lookup_Database.xlsx")
 
 df = load_data()
 
