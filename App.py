@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_searchbox import st_searchbox
 
-# Load Excel data (cached for 2025 performance standards)
-@st.cache_data
+# Load Excel data 
 def load_data():
     return pd.read_excel("Lookup_Database.xls")
 
@@ -15,7 +14,7 @@ def search_addresses(searchterm: str):
     if not searchterm or len(searchterm) < 3:
         return []
     
-    # Filter the 'Address' column (Ensure your Excel header is exactly 'Address')
+   
     # case=False makes it non-case-sensitive
     mask = df['ADDRESS'].str.contains(searchterm, case=False, na=False)
     matches = df[mask]['ADDRESS'].unique().tolist()
@@ -23,7 +22,7 @@ def search_addresses(searchterm: str):
     # Return top 10 matches to keep the dropdown clean
     return matches[:10]
 
-st.title("📍 Address Search Portal")
+st.title("Address Search")
 
 # The dynamic search component
 selected_address = st_searchbox(
