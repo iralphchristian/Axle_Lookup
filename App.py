@@ -5,7 +5,7 @@ from streamlit_searchbox import st_searchbox
 # Load Excel data 
 @st.cache_data
 def load_data():
-    return pd.read_excel("Lookup_Database.xls")
+    return pd.read_excel("Lookup_Database.xlsx")
 
 df = load_data()
 
